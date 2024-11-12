@@ -1,0 +1,336 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.review-form {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.rating {
+    font-size: 24px;
+    color: #ddd;
+    margin: 10px 0;
+}
+
+.star {
+    cursor: pointer;
+}
+
+.star.active {
+    color: gold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.review-card {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.rating .star {
+    cursor: pointer;
+    color: #ddd;
+}
+
+/* Star colors based on rating */
+.rating .star.rate-1 {
+    color: #ff4545;  /* Red */
+}
+
+.rating .star.rate-2 {
+    color: #ffa534;  /* Orange */
+}
+
+.rating .star.rate-3 {
+    color: #ffe234;  /* Yellow */
+}
+
+.rating .star.rate-4 {
+    color: #b7dd29;  /* Light green */
+}
+
+.rating .star.rate-5 {
+    color: #57e32c;  /* Green */
+}
+
+/* Style for the displayed reviews */
+.review-card .rating {
+    font-size: 20px;
+}
+
+.review-card .rating.rate-1 {
+    color: #ff4545;
+}
+
+.review-card .rating.rate-2 {
+    color: #ffa534;
+}
+
+.review-card .rating.rate-3 {
+    color: #ffe234;
+}
+
+.review-card .rating.rate-4 {
+    color: #b7dd29;
+}
+
+.review-card .rating.rate-5 {
+    color: #57e32c;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80') no-repeat center center;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.hero-content {
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:first-child {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Styles */
+.footer {
+    background: #333;
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #4CAF50;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #555;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.fa-heart {
+    color: #ff4545;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5em;
+    }
+    
+    .hero p {
+        font-size: 1.2em;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+.auth-buttons {
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.auth-buttons .btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#loginBtn {
+    background: #4285f4;  /* Google Blue */
+    color: white;
+    border: none;
+}
+
+#logoutBtn {
+    background: #ffffff;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+.auth-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.review-actions {
+    margin-top: 10px;
+}
+
+.review-actions button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.review-actions button:first-child {
+    background: #4CAF50;
+    color: white;
+}
+
+.review-actions button:last-child {
+    background: #ff4545;
+    color: white;
+}
+
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Add smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .review-card {
+        margin: 1rem;
+    }
+} 
