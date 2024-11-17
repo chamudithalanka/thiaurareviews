@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Required</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-pulse-slow {
+            animation: pulse 2s infinite;
+        }
+        
+        .chatbot-container {
+            transition: all 0.3s ease;
+        }
+        
+        .chat-message {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.5s forwards;
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .typing-indicator span {
+            animation: blink 1.4s infinite;
+            animation-fill-mode: both;
+            height: 5px;
+            width: 5px;
+            background-color: #3B82F6;
+            display: inline-block;
+            border-radius: 50%;
+            margin: 0 1px;
+        }
+        
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes blink {
+            0% { opacity: 0.1; }
+            20% { opacity: 1; }
+            100% { opacity: 0.1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <!-- Previous content remains the same until the end -->
+    <div class="max-w-2xl w-full bg-white rounded-lg shadow-xl overflow-hidden">
+        <!-- Warning Header -->
+        <div class="bg-red-600 p-6 text-center">
+            <div class="animate-pulse-slow">
+                <i class="fas fa-exclamation-triangle text-white text-5xl mb-4"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-white mb-2">PAYMENT UNDONE</h1>
+            <p class="text-white text-opacity-90">Your website is currently paused due to pending payment</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-6 space-y-6">
+            <!-- Previous content remains the same -->
+            <div class="text-center">
+                <p class="text-gray-700 text-lg">
+                    To publish your original website, please complete the pending payment.
+                    Once the payment is processed, your website will be restored immediately.
+                </p>
+            </div>
+
+            <!-- Payment Instructions -->
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-800 mb-3">
+                    <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                    Next Steps
+                </h2>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>Review your pending payment details</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>Complete the payment using the provided payment methods</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>Your website will be restored within 24 hours of payment confirmation</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                    <i class="fas fa-envelope text-blue-500 mr-2"></i>
+                    Contact Us
+                </h2>
+                <form action="https://formsubmit.co/chamudithalankathilaka@gmail.com" method="POST" class="space-y-4">
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html">
+                    <input type="hidden" name="_subject" value="New Payment Query">
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="name">Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="email">Email</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"></textarea>
+                    </div>
+                    
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-200 flex items-center justify-center">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t border-gray-200 p-4 text-center text-gray-600">
+            <p>For immediate assistance, please contact support</p>
+        </div>
+    </div>
+
+    <!-- Chatbot Button -->
+    <div class="fixed bottom-6 right-6">
+        <button id="chatbot-toggle" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 animate-pulse-slow">
+            <i class="fas fa-comments text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" class="fixed bottom-24 right-6 w-80 bg-white rounded-lg shadow-2xl chatbot-container scale-0 origin-bottom-right">
+        <!-- Chatbot Header -->
+        <div class="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-robot mr-2"></i>
+                <span class="font-semibold">Payment Assistant</span>
+            </div>
+            <button id="close-chat" class="text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="p-4 h-80 overflow-y-auto space-y-4">
+            <!-- Messages will be added here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Previous script content remains
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            const button = form.querySelector('button[type="submit"]');
+            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            button.disabled = true;
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const closeChat = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const bankDetails = {
+            bankName: "Commercial Bank",
+            accountNumber: "8004811578",
+            accountHolder: "Chamuditha Lankathilaka"
+        };
+
+        function addMessage(message, isBot = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message flex ${isBot ? 'justify-start' : 'justify-end'}`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = `max-w-[80%] p-3 rounded-lg ${isBot ? 'bg-gray-100' : 'bg-blue-600 text-white'}`;
+            messageContent.textContent = message;
+            
+            messageDiv.appendChild(messageContent);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.className = 'chat-message flex justify-start';
+            indicator.innerHTML = `
+                <div class="bg-gray-100 p-4 rounded-lg typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            `;
+            indicator.id = 'typing-indicator';
+            chatMessages.appendChild(indicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return indicator;
+        }
+
+        function showBankDetails() {
+            // Welcome message
+            addMessage("Hello! I'm here to help you with the payment details.", true);
+            
+            setTimeout(() => {
+                addMessage("Here are the bank details for making the payment:", true);
+                
+                setTimeout(() => {
+                    addMessage(`Bank Name: ${bankDetails.bankName}`, true);
+                    
+                    setTimeout(() => {
+                        addMessage(`Account Number: ${bankDetails.accountNumber}`, true);
+                        
+                        setTimeout(() => {
+                            addMessage(`Account Holder: ${bankDetails.accountHolder}`, true);
+                            
+                            setTimeout(() => {
+                                addMessage("Please make sure to include your website URL or project reference in the payment description.", true);
+                                
+                                setTimeout(() => {
+                                    addMessage("Is there anything else you'd like to know?", true);
+                                }, 1000);
+                            }, 1000);
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('scale-0');
+            if (!chatbotContainer.classList.contains('scale-0') && chatMessages.children.length === 0) {
+                showBankDetails();
+            }
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatbotContainer.classList.add('scale-0');
+        });
+    </script>
+</body>
+</html>
